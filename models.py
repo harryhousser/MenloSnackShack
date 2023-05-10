@@ -14,8 +14,6 @@ class User(Base):
     snacks = relationship('Snack', back_populates='user')
 
 
-
-
 class Snack(Base):
     __tablename__ = "snacks"
 

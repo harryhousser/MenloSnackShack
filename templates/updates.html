@@ -38,6 +38,8 @@
 <h2>Week of 5/01 - Snack Shack Updates</h2>
 
 <h2 class="text-center">New Stock:</h2>
+
+<!-- iterates through snacks in category 'upcoming', filling out each card accordingly -->
 <div class="row">
     {% for snack in snacks if snack.category == 'upcoming' %}
       <div class="col-md-3">
@@ -49,6 +51,7 @@
             <br>
             <br>
             <div class="card-buttons">
+                <!-- like button -->
                 <form method="POST">
                     <input type="hidden" name="snack" value="{{ snack.id }}">
                     <button class="like-button" type="submit"><i class="fas fa-thumbs-up"></i></button>
@@ -74,8 +77,11 @@
 
 <h2 class="text-center">Hours this week: </h2>
 
-
-<table style="width:100%">
+<!-- Table for open hours
+Planned to have it be dynamic so that administrators could edit it,
+ and I know I could do it if I had more time, but it was not a priority so didn't finish it.
+(Snack Shack is open the same time every day anyway) -->
+<table>
     <tr>
       <th>Monday</th>
       <th>Tuesday</th>

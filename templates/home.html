@@ -31,8 +31,8 @@
 
     
 <h2 class="text-center food">Food</h2>
-
 <div class="row">
+    <!-- iterates through snacks in category 'food', filling out each card accordingly -->
     {% for snack in snacks if snack.category == 'food' %}
       <div class="col-md-3">
         <div class="card">
@@ -43,6 +43,7 @@
             <br>
             <br>
             <div class="card-buttons">
+                <!-- like button -->
                 <form method="POST">
                     <input type="hidden" name="snack" value="{{ snack.id }}">
                     <button class="like-button" type="submit"><i class="fas fa-thumbs-up"></i></button>
@@ -65,6 +66,7 @@
 <br>
 <h2 class="text-center">Drinks</h2>
 
+<!-- iterates through snacks in category 'drink', filling out each card accordingly -->
 <div class="row">
     {% for snack in snacks if snack.category == 'drink' %}
       <div class="col-md-3">
@@ -76,6 +78,7 @@
             <br>
             <br>
             <div class="card-buttons">
+                <!-- like button -->
                 <form method="POST">
                     <input type="hidden" name="snack" value="{{ snack.id }}">
                     <button class="like-button" type="submit"><i class="fas fa-thumbs-up"></i></button>
@@ -99,6 +102,7 @@
 <br>
 <h2 class="text-center">Snacks</h2>
 
+<!-- iterates through snacks in category 'snack', filling out each card accordingly -->
 <div class="row">
     {% for snack in snacks if snack.category == 'snack' %}
       <div class="col-md-3">
@@ -110,6 +114,7 @@
             <br>
             <br>
             <div class="card-buttons">
+                <!-- like button -->
                 <form method="POST">
                     <input type="hidden" name="snack" value="{{ snack.id }}">
                     <button class="like-button" type="submit"><i class="fas fa-thumbs-up"></i></button>
@@ -132,6 +137,8 @@
 
 <br>
 <h2 class="text-center">Desserts</h2>
+
+<!-- iterates through snacks in category 'dessert', filling out each card accordingly -->
 <div class="row">
     {% for snack in snacks if snack.category == 'dessert' %}
       <div class="col-md-3">
@@ -143,6 +150,7 @@
             <br>
             <br>
             <div class="card-buttons">
+                <!-- like button -->
                 <form method="POST">
                     <input type="hidden" name="snack" value="{{ snack.id }}">
                     <button class="like-button" type="submit"><i class="fas fa-thumbs-up"></i></button>

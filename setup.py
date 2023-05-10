@@ -1,6 +1,12 @@
 from database import init_db, db_session
 from models import *
 
+# Note that the links (learn more button link) are not all correct. 
+# I just wanted to get them into the database but it was tedious to create them all
+# so many of them have the same link. This can be easily changed because in practice
+# if the menlo snack shack were to adopt this website they would have to update
+# all the snacks anyway.
+
 init_db()
 # initialize updates page
 snack1 = Snack(name="PB&J", category="upcoming", image="https://www.cookiedoughandovenmitt.com/wp-content/uploads/2017/07/toasted-peanut-butter-and-jelly-sandwich-2-picture.jpg", link="https://www.peanutbutter.com/recipes/the-classic-peanut-butter-and-jelly-sandwich")
