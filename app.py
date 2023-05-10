@@ -7,16 +7,18 @@ app = Flask(__name__)
 
 app.secret_key = 'S4/Zdjg1sLG/knYR9i7lKg=='
 
-@app.route("/")
-@app.route("/home")
+@app.route("/", methods=['GET', 'POST'])
+@app.route("/home", methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
             snack_id = request.form['snack']
             snack = db_session.query(Snack).filter_by(id = snack_id).first()
             snack.like_count += 1
             db_session.commit()
+
     user = db_session.query(User).filter_by(username=session['username']).first()
-    return render_template("home.html", user=user)
+    snacks = db_session.query(Snack)
+    return render_template("home.html", user=user, snacks=snacks)
 
 @app.route("/updates", methods=['GET', 'POST'])
 def updates():
