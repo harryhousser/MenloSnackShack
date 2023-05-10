@@ -17,9 +17,13 @@ def home():
             snack.like_count += 1
             db_session.commit()
 
-    # gives username and snacks to home.html for future is_admin check 
+    # Check if the user is logged in
+    user = None
+    if 'username' in session:
+        user = db_session.query(User).filter_by(username=session['username']).first()
+        
+    # gives username and snacks to home.html for future "is_admin check" 
     # and to make sure snacks are updated
-    user = db_session.query(User).filter_by(username=session['username']).first()
     snacks = db_session.query(Snack)
     return render_template("home.html", user=user, snacks=snacks)
 
@@ -100,7 +104,11 @@ def login():
         else:
             session['username'] = username
             return redirect(url_for('home'))
-            
+
+
+
+
+
             
         
     
@@ -122,7 +130,7 @@ def update_snack():
             flash("Snack to be replaced not found")
             return redirect(url_for("update_snack"))
 
-        user = db_session.query(User).filter_by(username=session['username']).first()
+        
 
         # Update the snack
         old_snack.name = name
@@ -138,12 +146,18 @@ def update_snack():
 
     elif request.method == 'GET': 
         # Check if the user is an admin
+        user = db_session.query(User).filter_by(username=session['username']).first()
         if not user.is_admin:
             flash("must be an admin to edit snacks")
             return redirect(url_for('home'))
-        # Render the form
-        return render_template("update_snack.html")
+        else:
+            return render_template("update_snack.html")
 
+# logoout
+@app.route("/logout")
+def logout():
+    session.pop("username")
+    return redirect(url_for("login"))
 
 if __name__ == "__main__":
     init_db()

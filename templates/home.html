@@ -20,6 +20,9 @@
     <li class="nav-item">
       <a class="nav-link" href="/update_snack">Update Snack!</a>
     </li>
+{% endif %}   
+{% if user %}
+    <a class="nav-link" href="/logout">Logout: {{ user.username }}</a>
 {% endif %}
 {% endblock %}
 
